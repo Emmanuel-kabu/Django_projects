@@ -1,0 +1,12 @@
+{% extends 'MyLogApp/Base.html' %}
+{% block content %}
+<p><a href = "{% url 'MyLogApp:topic' topic.id %}">{{ topic }}</a></p>
+<p>add a new entry:</p>
+<form action = "{% url 'MyLogApp:new_entry' topic.id %}" method = 'post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button name = 'submit'>add entry</button>
+</form>
+{% endblock content %}
+

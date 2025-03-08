@@ -1,0 +1,21 @@
+{% extends 'MyLogApp/base.html' %}
+{% block content%}
+    <p>Topic : {{topic}} </p>
+    <p>Entries:</p>
+      <p><a href ="{% url 'MyLogApp:new_entry' topic.id %}">add new entry</a>
+    <ul>
+        {% for entry in entries %}
+         <li>
+            <p>{{ entry.date_added|date}}</p>
+            <p>{{ entry.text|linebreaks }}</p>
+         </li>   
+        {% empty %}
+         <li>
+            There are no entries for this topic yet 
+         </li>
+        {% endfor %}
+    </ul> 
+
+{% endblock content%}
+
+
